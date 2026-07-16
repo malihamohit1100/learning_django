@@ -1,0 +1,38 @@
+# Virtual environments
+myenv/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# SQLite database
+db.sqlite3
+
+# Django migrations (optional, keep if you want history)
+*/migrations/__pycache__/
+*/migrations/*.pyc
+
+# Static files collected by collectstatic
+staticfiles/
+
+# Media uploads (user-uploaded files)
+media/
+
+# Logs
+*.log
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.swp
+
+# Windows specific
+Thumbs.db
+Desktop.ini
+
+# Mac specific
+.DS_Store
