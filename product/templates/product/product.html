@@ -7,5 +7,32 @@
 </head>
 <body>
     <h1>This is product page</h1>
+    <form method="POST" enctype="multipart/form-data">
+
+        {% csrf_token %}
+        {{ product_form.as_p }}
+
+        {% comment %} {% csrf_token %}
+        <p>
+        <label for="product_name">Product Name:</label>
+        <input type="text" name="product_name" value="">
+        </p>
+        <p>
+        <label for="product_price">Product Price:</label>
+        <input type="number" name="product_price" value="">
+        </p>
+        <p>
+        <label for="product_description">Product Description:</label>
+        <textarea name="product_description"></textarea>
+        </p>
+        <p>
+        <button type="submit">Submit</button>
+        </p> {% endcomment %}
+
+        <p>
+        <button type="submit">Submit</button>
+        </p>
+    </form>
+
 </body>
 </html>

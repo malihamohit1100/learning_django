@@ -3,6 +3,14 @@ from django.http import HttpResponse
 from . import models
 
 # Create your views here.
+#Three types of forms in django
+"""
+1. HTML Form
+2. Forms API
+3. Model Form
+
+"""
+
 # def profile(request):
 #     return HttpResponse("I am inside student profile")
 
@@ -34,7 +42,9 @@ def profile(request):
     return render(request, 'student/index.html', {"marks": marks, "age": 20, "Name": "John Doe", "list": ["Math", "Science", "English"], "student_data": student_data})
 
 def home (request):
-    return HttpResponse("I am home page")
+    #return HttpResponse("I am home page")
+    print(request.POST)
+    return render(request,'student/index.html')
 
 def delete_student(request, id):
     student = models.Student.objects.get(id=id)
