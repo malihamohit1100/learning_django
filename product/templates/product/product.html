@@ -6,11 +6,11 @@
     <title>product Page</title>
 </head>
 <body>
-    <h1>This is product page</h1>
+    <h1>This is our product page</h1>
     <form method="POST" enctype="multipart/form-data">
-
+        {{form.as_p}}
         {% csrf_token %}
-        {{ product_form.as_p }}
+    
 
         {% comment %} {% csrf_token %}
         <p>
@@ -33,6 +33,10 @@
         <button type="submit">Submit</button>
         </p>
     </form>
-
+    {% if messages %}
+        {% for message in messages %}
+        <div style="color: green;">{{message}}</div>
+        {% endfor %}
+    {% endif %}
 </body>
 </html>

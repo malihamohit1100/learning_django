@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from . import views
-from product.views import product_view
+from product.views import product_view, product_list, product_update_view, ProductListView, ProductCreateView, ProductUpdateView
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -27,7 +27,9 @@ urlpatterns = [
     path('student/', include('student.urls')),
     path('teacher/', include('teacher.urls')),
     path('home/', views.home),
-    path('product/', product_view , name='product')
+    path('product/', ProductCreateView.as_view() , name='product'),
+    path('product_list/', ProductListView.as_view(), name='ProductListView'),
+    path('product/<int:pk>/', ProductUpdateView.as_view(), name='productUpdateView')
 ]
 
 if settings.DEBUG:

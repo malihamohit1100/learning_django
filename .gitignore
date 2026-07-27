@@ -19,9 +19,6 @@ db.sqlite3
 # Static files collected by collectstatic
 staticfiles/
 
-# Media uploads (user-uploaded files)
-media/
-
 # Logs
 *.log
 
