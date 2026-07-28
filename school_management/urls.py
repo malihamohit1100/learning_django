@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from . import views
-from product.views import product_view, product_list, product_update_view, ProductListView, ProductCreateView, ProductUpdateView
+from product.views import product_view, product_list, product_update_view, ProductListView, ProductCreateView, ProductUpdateView, test_view
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -29,8 +29,13 @@ urlpatterns = [
     path('home/', views.home),
     path('product/', ProductCreateView.as_view() , name='product'),
     path('product_list/', ProductListView.as_view(), name='ProductListView'),
-    path('product/<int:pk>/', ProductUpdateView.as_view(), name='productUpdateView')
+    path('product/<int:pk>/', ProductUpdateView.as_view(), name='productUpdateView'),
+    path('test_view/', test_view, name='test_view'),
+
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += [
+        path("__debug__/", include("debug_toolbar.urls")),
+    ]
