@@ -10,6 +10,7 @@ from django.views.generic import (
 )
 from django.contrib.auth.models import User
 from django.db.models import Q,Sum,Avg,Count
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 # view can be a function or class based view
@@ -96,9 +97,10 @@ class ProductUpdateView(UpdateView):
     form_class = ProductForm
     success_url = "/product"
 
+@login_required
 def test_view(request):
     # users = User.objects.all()
-    products = Product.objects.all().select_related('category') # one to one field, foreign key te kaj kore select keyword
+    # products = Product.objects.all().select_related('category') # one to one field, foreign key te kaj kore select keyword
     # print(products.query)
 
     # foregnkey, one to one --> select_related
@@ -132,8 +134,8 @@ def test_view(request):
         # print(product.product_name)
         # print(product.product_price)
         # print(product.category) #N query (product number = query number)
-    category = Category.objects.get(id=1)
-    print(category.products.all())
+    # category = Category.objects.get(id=1)
+    # print(category.products.all())
 
     # return HttpResponse("<h1>Test View</h1>")
     return render(request=request,template_name='debug.html')

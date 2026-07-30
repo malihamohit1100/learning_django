@@ -20,7 +20,8 @@ from . import views
 from product.views import product_view, product_list, product_update_view, ProductListView, ProductCreateView, ProductUpdateView, test_view
 from django.conf import settings
 from django.conf.urls.static import static
-
+from accounts.views import ResisterView
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,6 +32,30 @@ urlpatterns = [
     path('product_list/', ProductListView.as_view(), name='ProductListView'),
     path('product/<int:pk>/', ProductUpdateView.as_view(), name='productUpdateView'),
     path('test_view/', test_view, name='test_view'),
+    path('resister/', ResisterView.as_view() , name='resister'),
+    path('login/', auth_views.LoginView.as_view() , name='login'),
+    path('logout/', auth_views.LogoutView.as_view() , name='logout'),
+    path('password_change/', auth_views.PasswordChangeView.as_view(), name='password_change'),
+    path('password_change/done', auth_views.PasswordChangeDoneView.as_view(), name='password_change_done'),
+    # Password reset request form
+    path('password_reset/', 
+         auth_views.PasswordResetView.as_view(), 
+         name='password_reset'),
+
+    # Confirmation that reset email was sent
+    path('password_reset/done/', 
+         auth_views.PasswordResetDoneView.as_view(), 
+         name='password_reset_done'),
+
+    # Link from email → form to enter new password
+    path('reset/<uidb64>/<token>/', 
+         auth_views.PasswordResetConfirmView.as_view(), 
+         name='password_reset_confirm'),
+
+    # Confirmation that password has been successfully reset
+    path('reset/done/', 
+         auth_views.PasswordResetCompleteView.as_view(), 
+         name='password_reset_complete'),
 
 ]
 

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'teacher',
     'product',
     'debug_toolbar',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -83,8 +84,12 @@ WSGI_APPLICATION = 'school_management.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "learning_django",
+        "USER": "postgres",
+        "PASSWORD": "postgrespassword",
+        "HOST": "localhost",
+        "PORT": "5432",
     }
 }
 
@@ -130,4 +135,10 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/test_view/'
+LOGOUT_REDIRECT_URL = '/login/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
